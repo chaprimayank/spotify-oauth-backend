@@ -6,7 +6,7 @@ let app = express()
 
 let redirect_uri =
   process.env.REDIRECT_URI ||
-  'http://localhost:8888/callback'
+  'http://localhost:8888/spotifyCallback'
 
 app.get('/login', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
@@ -18,7 +18,7 @@ app.get('/login', function(req, res) {
     }))
 })
 
-app.get('/callback', function(req, res) {
+app.get('/spotifyCallback', function(req, res) {
   let code = req.query.code || null
   let authOptions = {
     url: 'https://accounts.spotify.com/api/token',
